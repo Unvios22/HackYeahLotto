@@ -12,6 +12,13 @@ namespace HackYeahLotto {
 			PositionY = positionX;
 		}
 
+		public Player(int id, int positionX, int positionY) {
+			Id = id;
+			NumberofTokens = 0;
+			PositionX = positionX;
+			PositionY = positionX;
+		}
+
 		void buyTokens(int amount) {
 			//todo
 		}
