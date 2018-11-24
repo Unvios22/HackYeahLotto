@@ -1,14 +1,16 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HackYeahLotto {
 	public class Game {
 		private int _numberOfPlayers;
-		private int _numberOfGrups;
+		private int _numberOfGroups;
 		private int _numberOfRegions;
 		private int _sumOfAllTokens;
 		private int _buyingCost;
 		private int _sellingCost;
+		private Random rnd;
 
 		// var initialListOfAllPlayers = new List<Players>();
 		private List<Player> _listOfAllPlayers = new List<Player>();
@@ -25,7 +27,13 @@ namespace HackYeahLotto {
 		{
 			SetNumberOfGroups();
 			SetNumberOfRegions();
-			InitializeGroups();
+			InitializeRegions();
+			for (int i = 0; i < 100; i++) //robie 100 graczy, bo taki mam kaprys
+			{
+				InitializePlayer();
+			}
+			AddPlayersToGroups();
+			
 		}
 
 		
@@ -34,13 +42,13 @@ namespace HackYeahLotto {
 			var groupCount = _listOfAllPlayers.Count / Settings.playersInGrup;
 			for (int i = 0; i < groupCount; i++)
 			{
-				_numberOfGrups++;
+				_numberOfGroups++;
 			}
 		}
 
 		private void SetNumberOfRegions()
 		{
-			var regionsCount = _numberOfGrups/Settings.grupsInRegion;
+			var regionsCount = _numberOfGroups/Settings.grupsInRegion;
 			for (int i = 0; i < regionsCount; i++)
 			{
 				_numberOfRegions++;
@@ -64,10 +72,35 @@ namespace HackYeahLotto {
 			}
 		}
 
-		private Group InitializeGroups()
+
+
+		private Group InitializeGroups()  //tu dodac
 		{
 			return new Group();
 		}
+
+		private void InitializePlayer()
+		{
+			_listOfAllPlayers.Add(new Player(NumberOfPlayers++, rnd.Next(0, 100), rnd.Next(0, 100)));
+		}
+		private void AddPlayersToGroups()
+		{
+			
+			var playerCount = Settings.playersInGrup;
+			foreach (var region in _listOfAllRegions)
+			{
+				foreach (var @group in region.ListOfGroupsInRegion)
+				{
+					for (int i = 0; i < playerCount; i++)
+					{
+						@group.PlayersInGroup.Add(_listOfAllPlayers[i]);
+					}
+				}
+			}
+			
+		}
+
+		
 		
 
 		public int NumberOfPlayers {
@@ -75,9 +108,9 @@ namespace HackYeahLotto {
 			set => _numberOfPlayers = value;
 		}
 
-		public int NumberOfGrups {
-			get => _numberOfGrups;
-			set => _numberOfGrups = value;
+		public int NumberOfGroups {
+			get => _numberOfGroups;
+			set => _numberOfGroups = value;
 		}
 
 		public int NumberOfRegions {
