@@ -2,7 +2,7 @@ namespace HackYeahLotto
 {
     public static class Settings
     {
-        static int playersInGrup;
-        private static int grupsInRegion;
+        public static int playersInGrup;
+        public static int grupsInRegion;
     }
 }
