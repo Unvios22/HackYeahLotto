@@ -16,12 +16,6 @@ namespace HackYeahLotto {
 		private List<Player> _listOfAllPlayers = new List<Player>();
 		private List<Region> _listOfAllRegions;
 
-		private void InitializePlayersList(int numberOfPlayers) {
-			for (int i = 0; i < numberOfPlayers; i++) {
-				// _listOfAllPlayers.Add(new Player());
-				//todo: define how players should bew added to the list
-			}
-		}
 
 		public Game()
 		{
@@ -74,7 +68,7 @@ namespace HackYeahLotto {
 
 
 
-		private Group InitializeGroups()  //tu dodac
+		private Group InitializeGroups() 
 		{
 			return new Group();
 		}
@@ -85,15 +79,17 @@ namespace HackYeahLotto {
 		}
 		private void AddPlayersToGroups()
 		{
-			
+			var j = 0;
 			var playerCount = Settings.playersInGrup;
 			foreach (var region in _listOfAllRegions)
 			{
 				foreach (var @group in region.ListOfGroupsInRegion)
 				{
+					
 					for (int i = 0; i < playerCount; i++)
 					{
-						@group.PlayersInGroup.Add(_listOfAllPlayers[i]);
+						@group.PlayersInGroup.Add(_listOfAllPlayers[j]);
+						j++;
 					}
 				}
 			}
