@@ -2,22 +2,22 @@ using System.Collections.Generic;
 
 namespace HackYeahLotto {
 	public class Region {
-		private int id;
-
-		private int numberOftokensInRegion;
+		
+		private int _id;
+		private int _numberOftokensInRegion;
 		//todo lista wszytkich grup w regionie
 
 		private List<Group> _listOfGroupsInRegion = new List<Group>();
 		//todo initialize the list properly
 
 		public int Id {
-			get => id;
-			set => id = value;
+			get => _id;
+			set => _id = value;
 		}
 
 		public int NumberOftokensInRegion {
-			get => numberOftokensInRegion;
-			set => numberOftokensInRegion = value;
+			get => _numberOftokensInRegion;
+			set => _numberOftokensInRegion = value;
 		}
 
 		public List<Group> ListOfGroupsInRegion {
