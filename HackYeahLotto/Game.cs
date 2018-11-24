@@ -12,6 +12,7 @@ namespace HackYeahLotto {
 
 		// var initialListOfAllPlayers = new List<Players>();
 		private List<Player> _listOfAllPlayers = new List<Player>();
+		private List<Region> _listOfAllRegions;
 
 		private void InitializePlayersList(int numberOfPlayers) {
 			for (int i = 0; i < numberOfPlayers; i++) {
@@ -19,6 +20,55 @@ namespace HackYeahLotto {
 				//todo: define how players should bew added to the list
 			}
 		}
+
+		public Game()
+		{
+			SetNumberOfGroups();
+			SetNumberOfRegions();
+			InitializeGroups();
+		}
+
+		
+		private void SetNumberOfGroups()
+		{
+			var groupCount = _listOfAllPlayers.Count / Settings.playersInGrup;
+			for (int i = 0; i < groupCount; i++)
+			{
+				_numberOfGrups++;
+			}
+		}
+
+		private void SetNumberOfRegions()
+		{
+			var regionsCount = _numberOfGrups/Settings.grupsInRegion;
+			for (int i = 0; i < regionsCount; i++)
+			{
+				_numberOfRegions++;
+			}
+			
+		}
+		
+		private void InitializeRegions()
+		{
+			var groupsInRegions = Settings.grupsInRegion;
+			for (int i = 0; i < _numberOfRegions; i++)
+			{
+				
+				Region region = new Region();
+				
+				for (int j = 0; j < groupsInRegions; j++)
+				{
+					region.ListOfGroupsInRegion.Add(InitializeGroups());
+				}
+				_listOfAllRegions.Add(region);
+			}
+		}
+
+		private Group InitializeGroups()
+		{
+			return new Group();
+		}
+		
 
 		public int NumberOfPlayers {
 			get => _numberOfPlayers;
@@ -54,5 +104,8 @@ namespace HackYeahLotto {
 			get => _listOfAllPlayers;
 			set => _listOfAllPlayers = value;
 		}
+
+
+		
 	}
 }
