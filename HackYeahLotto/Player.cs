@@ -9,14 +9,14 @@ namespace HackYeahLotto {
 			Id = id;
 			NumberofTokens = numberOfTokens;
 			PositionX = positionX;
-			PositionY = positionX;
+			PositionY = positionY;
 		}
 
 		public Player(int id, int positionX, int positionY) {
 			Id = id;
 			NumberofTokens = 0;
 			PositionX = positionX;
-			PositionY = positionX;
+			PositionY = positionY;
 		}
 
 		void buyTokens(int amount) {

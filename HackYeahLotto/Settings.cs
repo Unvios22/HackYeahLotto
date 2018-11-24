@@ -1,8 +1,7 @@
 namespace HackYeahLotto
 {
-    public static class Settings
-    {
-        public static int playersInGrup;
-        public static int grupsInRegion;
+    public static class Settings{
+        public static int _playersInGroup;
+        public static int _groupsInRegion;
     }
 }
