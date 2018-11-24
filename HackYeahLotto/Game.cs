@@ -5,27 +5,21 @@ namespace HackYeahLotto
 {
     public class Game
     {
-        private int numberPlayers;
-        private int numberGrups;
-        private int numberOfRegions;
-        private int numberOfAllTokens;
-        private int sumOfAllTokens;
-        private int buyingCost;
-        private int sellingCost;
+        private int _numberOfPlayers;
+        private int _numberOfGrups;
+        private int _numberOfRegions;
+        private int _sumOfAllTokens;
+        private int _buyingCost;
+        private int _sellingCost;
 
        // var initialListOfAllPlayers = new List<Players>();
+        private List<Player> _listOfAllPlayers = new List<Player>();
 
-
-        void buyTokens(int amount)
-        {
-            //todo
+        private void InitializePlayersList() {
+            
         }
 
-        void setCords()
-        {
-            //todo
-            //get position i tak dalej
-        }
+        
     }
 
 

@@ -7,5 +7,16 @@ namespace HackYeahLotto
         private int X;
         private int Y;
         
+        void buyTokens(int amount)
+        {
+            //todo
+        }
+
+        void setCords()
+        {
+            //todo
+            //get position i tak dalej
+        }
+        
     }
 }
