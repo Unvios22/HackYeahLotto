@@ -9,7 +9,7 @@ namespace HackYeahLotto
         private int _positionX;
         private int _positionY;
 
-        Player(int id, int numberOfTokens, int positionX, int positionY ) {
+        public Player(int id, int numberOfTokens, int positionX, int positionY ) {
             Id = id;
             NumberofTokens = numberOfTokens;
             PositionX = positionX;
