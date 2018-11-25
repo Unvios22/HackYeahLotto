@@ -1,34 +1,24 @@
 using System.Collections.Generic;
 
-namespace HackYeahLotto {
-	public class Group {
+namespace HackYeahLotto{
+	public class Group{
 		private int _id;
-		private int _numberOfTokensInGroup;
 
-		private List<Player> _playersInGroup = new List<Player>();
 		//todo: how to initialize the list of players
-		
-		void SumNumberOfTokens()
-		{
-			foreach (var player in _playersInGroup)
-			{
-				_numberOfTokensInGroup += player.NumberofTokens;
+
+		void SumNumberOfTokens(){
+			foreach(var player in PlayersInGroup){
+				NumberOfTokensInGroup += player.NumberOfTokens;
 			}
 		}
 
-		public int Id {
+		public int Id{
 			get => _id;
 			set => _id = value;
 		}
 
-		public int NumberOfTokensInGroup {
-			get => _numberOfTokensInGroup;
-			set => _numberOfTokensInGroup = value;
-		}
+		public int NumberOfTokensInGroup{ get; set; }
 
-		public List<Player> PlayersInGroup {
-			get => _playersInGroup;
-			set => _playersInGroup = value;
-		}
+		public List<Player> PlayersInGroup{ get; set; } = new List<Player>();
 	}
 }

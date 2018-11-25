@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace HackYeahLotto {
-	public class Game {
+namespace HackYeahLotto{
+	public class Game{
 		private int _numberOfPlayers;
 		private int _numberOfGroups;
 		private int _numberOfRegions;
@@ -17,154 +17,104 @@ namespace HackYeahLotto {
 		private List<Region> _listOfAllRegions;
 
 
-		public Game()
-		{
+		public Game(){
 			SetNumberOfGroups();
 			SetNumberOfRegions();
 			InitializeRegions(_listOfAllRegions);
 			InitializePlayer(500);
 			AddPlayersToGroups();
-			
 		}
 
-		
-		private void SetNumberOfGroups()
-		{
-			
+
+		private void SetNumberOfGroups(){
 			var groupCount = _listOfAllPlayers.Count / Settings.playersInGroup;
-			for (int i = 0; i < groupCount; i++)
-			{
+			for(int i = 0; i < groupCount; i++){
 				_numberOfGroups++;
 			}
 		}
 
-		private void SetNumberOfRegions()
-		{
-			var regionsCount = _numberOfGroups/Settings.groupsInRegion;
-			for (int i = 0; i < regionsCount; i++)
-			{
+		private void SetNumberOfRegions(){
+			var regionsCount = _numberOfGroups / Settings.groupsInRegion;
+			for(int i = 0; i < regionsCount; i++){
 				_numberOfRegions++;
 			}
-			
 		}
-		
-		private void InitializeRegions(List<Region> listOfRegions)
-		{
+
+		private void InitializeRegions(List<Region> listOfRegions){
 			var groupsInRegions = Settings.groupsInRegion;
-			for (int i = 0; i < _numberOfRegions; i++)
-			{
-				
-				Region region = new Region();
-				
-				for (int j = 0; j < groupsInRegions; j++)
-				{
-					region.ListOfGroupsInRegion.Add(InitializeGroups());
+			for(var i = 0; i < _numberOfRegions; i++){
+				var region = new Region();
+
+				for(var j = 0; j < groupsInRegions; j++){
+					region.ListOfGroupsInRegion.Add(new Group());
 				}
+
 				listOfRegions.Add(region);
 			}
 		}
 
-
-
-		private Group InitializeGroups() 
-		{
-			return new Group();
-		}
-
-		private void InitializePlayer(int num)
-		{
-			for (int i = 0; i < num; i++)
-			{
-				_listOfAllPlayers.Add(new Player(NumberOfPlayers++, rnd.Next(0, 100), rnd.Next(0, 100)));
+		private void InitializePlayer(int num){
+			for(var i = 0; i < num; i++){
+				var player = new Player(NumberOfPlayers++, rnd.Next(0, 100), rnd.Next(0, 100));
+				_listOfAllPlayers.Add(player);
 			}
-			
 		}
-		
-		private void AddPlayersToGroups()
-		{
+
+		private void AddPlayersToGroups(){
 			var j = 0;
 			var playerCount = Settings.playersInGroup;
-			foreach (var region in _listOfAllRegions)
-			{
-				foreach (var @group in region.ListOfGroupsInRegion)
-				{
-					
-					for (int i = 0; i < playerCount; i++)
-					{
-						@group.PlayersInGroup.Add(_listOfAllPlayers[j]);
+			foreach(var region in _listOfAllRegions){
+				foreach(var group in region.ListOfGroupsInRegion){
+					for(int i = 0; i < playerCount; i++){
+						group.PlayersInGroup.Add(_listOfAllPlayers[j]);
 						j++;
 					}
 				}
 			}
 		}
 
-		void setRandomNumberOfTokens()
-		{
+		void setRandomNumberOfTokens(){
 			var playerCount = Settings.playersInGroup;
-			foreach (var region in _listOfAllRegions)
-			{
-				foreach (var @group in region.ListOfGroupsInRegion)
-				{
-					foreach (var player in group.PlayersInGroup)
-					{
-						player.NumberofTokens = rnd.Next(1, 30);
+			foreach(var region in _listOfAllRegions){
+				foreach(var group in region.ListOfGroupsInRegion){
+					foreach(var player in group.PlayersInGroup){
+						player.NumberOfTokens = rnd.Next(1, 30);
 					}
-				
 				}
 			}
 		}
-		private List<Region> SetNewRegions(List<Group> winningGroups,int numberOfGroupsInRegion) {
+
+		private List<Region> SetNewRegions(List<Group> winningGroups, int numberOfGroupsInRegion){
 			//assumes the number of provided groups % numberOfGroupsInRegion == 0
 			var createdRegions = new List<Region>();
-			for (int i = 0; i < winningGroups.Count/numberOfGroupsInRegion; i++) {
+			for(var i = 0; i < winningGroups.Count / numberOfGroupsInRegion; i++){
 				createdRegions.Add(new Region());
 			}
+
 			var count = 0;
-			for (int i = 0; i < winningGroups.Count; i++) {
+			for(var i = 0; i < winningGroups.Count; i++){
 				createdRegions[count].ListOfGroupsInRegion.Add(winningGroups[i]);
-				if (i+1 %numberOfGroupsInRegion == 0) {
+				if(i + 1 % numberOfGroupsInRegion == 0){
 					count++;
 				}
-			} return createdRegions;
-		}
-		
+			}
 
-		public int NumberOfPlayers {
-			get => _numberOfPlayers;
-			set => _numberOfPlayers = value;
-		}
-
-		public int NumberOfGroups {
-			get => _numberOfGroups;
-			set => _numberOfGroups = value;
-		}
-
-		public int NumberOfRegions {
-			get => _numberOfRegions;
-			set => _numberOfRegions = value;
-		}
-
-		public int SumOfAllTokens {
-			get => _sumOfAllTokens;
-			set => _sumOfAllTokens = value;
-		}
-
-		public int BuyingCost {
-			get => _buyingCost;
-			set => _buyingCost = value;
-		}
-
-		public int SellingCost {
-			get => _sellingCost;
-			set => _sellingCost = value;
-		}
-
-		public List<Player> ListOfAllPlayers {
-			get => _listOfAllPlayers;
-			set => _listOfAllPlayers = value;
+			return createdRegions;
 		}
 
 
-		
+		public int NumberOfPlayers{ get; set; }
+
+		public int NumberOfGroups{ get; set; }
+
+		public int NumberOfRegions{ get; set; }
+
+		public int SumOfAllTokens{ get; set; }
+
+		public int BuyingCost{ get; set; }
+
+		public int SellingCost{ get; set; }
+
+		public List<Player> ListOfAllPlayers{ get; set; }
 	}
 }

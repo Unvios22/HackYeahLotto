@@ -1,51 +1,34 @@
-namespace HackYeahLotto {
-	public class Player {
-		private int _id;
-		private int _numberofTokens;
-		private float _positionX;
-		private float _positionY;
-
-		public Player(int id, int numberOfTokens, int positionX, int positionY) {
+namespace HackYeahLotto{
+	public class Player{
+		public Player(int id, int numberOfTokens, int positionX, int positionY){
 			Id = id;
-			NumberofTokens = numberOfTokens;
+			NumberOfTokens = numberOfTokens;
 			PositionX = positionX;
 			PositionY = positionY;
 		}
 
-		public Player(int id, int positionX, int positionY) {
+		public Player(int id, int positionX, int positionY){
 			Id = id;
-			NumberofTokens = 0;
+			NumberOfTokens = 0;
 			PositionX = positionX;
 			PositionY = positionY;
 		}
-		
-		void buyTokens(int amount) {
+
+		void buyTokens(int amount){
 			//todo
 		}
 
-		void setCords() {
+		void setCords(){
 			//todo
 			//get position i tak dalej
 		}
 
-		public int Id {
-			get => _id;
-			set => _id = value;
-		}
+		public int Id{ get; set; }
 
-		public int NumberofTokens {
-			get => _numberofTokens;
-			set => _numberofTokens = value;
-		}
+		public int NumberOfTokens{ get; set; }
 
-		public float PositionX {
-			get => _positionX;
-			set => _positionX = value;
-		}
+		public float PositionX{ get; set; }
 
-		public float PositionY {
-			get => _positionY;
-			set => _positionY = value;
-		}
+		public float PositionY{ get; set; }
 	}
 }
