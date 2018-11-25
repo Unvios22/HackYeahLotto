@@ -133,6 +133,8 @@ namespace HackYeahLotto {
 					i++;
 				}
 			}
+
+			_listOfAllRegions = newRegions;
 		}
 		
 
