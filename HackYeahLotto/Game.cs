@@ -96,7 +96,21 @@ namespace HackYeahLotto {
 			
 		}
 
-		
+		void setRandomNumberOfTokens()
+		{
+			var playerCount = Settings.playersInGrup;
+			foreach (var region in _listOfAllRegions)
+			{
+				foreach (var @group in region.ListOfGroupsInRegion)
+				{
+					foreach (var player in group.PlayersInGroup)
+					{
+						player.NumberofTokens = rnd.Next(1, 30);
+					}
+				
+				}
+			}
+		}
 		
 
 		public int NumberOfPlayers {
