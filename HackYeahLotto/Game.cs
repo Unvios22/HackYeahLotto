@@ -77,6 +77,7 @@ namespace HackYeahLotto {
 		{
 			_listOfAllPlayers.Add(new Player(NumberOfPlayers++, rnd.Next(0, 100), rnd.Next(0, 100)));
 		}
+		
 		private void AddPlayersToGroups()
 		{
 			var j = 0;
@@ -93,7 +94,6 @@ namespace HackYeahLotto {
 					}
 				}
 			}
-			
 		}
 
 		void setRandomNumberOfTokens()
@@ -110,6 +110,15 @@ namespace HackYeahLotto {
 				
 				}
 			}
+		}
+
+		private void setNewRegions()
+		{
+			WinnerChooser chooser = new WinnerChooser();
+			List<Region> newRegion = new List<Region>();
+			
+			
+
 		}
 		
 
