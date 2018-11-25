@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HackYeahLotto {
 	public class Game {
+	//test
 		private int _numberOfPlayers;
 		private int _numberOfGroups;
 		private int _numberOfRegions;
