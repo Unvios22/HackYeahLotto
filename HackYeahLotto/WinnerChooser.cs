@@ -23,5 +23,27 @@ namespace HackYeahLotto {
 
 			return randomizedNumberGroupPairs[smallestNumber];
 		}
+
+		public Player ChooseWinner(IEnumerable<Player> listOfPlayers, int numberOfTokensInGroup)
+		{
+			var randomizedNumberPlayerPairs = new Dictionary<float, Player>();
+			var random = new Random();
+			foreach (var player in listOfPlayers) {
+				var percentageChance =  (float) player.NumberofTokens / numberOfTokensInGroup;
+				//casting to float to counter possible loss of fraction;
+				var randomizedNumber = random.Next(0, 10000) / percentageChance;
+				randomizedNumberPlayerPairs.Add(randomizedNumber,player);
+			}
+
+			float smallestNumber = 10000;
+			foreach (var pair in randomizedNumberPlayerPairs) {
+				if (pair.Key < smallestNumber) {
+					smallestNumber = pair.Key;
+				}
+			}
+
+			return randomizedNumberPlayerPairs[smallestNumber];
+		}
+		
 	}
 }
