@@ -2,8 +2,8 @@ namespace HackYeahLotto {
 	public class Player {
 		private int _id;
 		private int _numberofTokens;
-		private int _positionX;
-		private int _positionY;
+		private float _positionX;
+		private float _positionY;
 
 		public Player(int id, int numberOfTokens, int positionX, int positionY) {
 			Id = id;
@@ -18,7 +18,7 @@ namespace HackYeahLotto {
 			PositionX = positionX;
 			PositionY = positionY;
 		}
-
+		
 		void buyTokens(int amount) {
 			//todo
 		}
@@ -38,12 +38,12 @@ namespace HackYeahLotto {
 			set => _numberofTokens = value;
 		}
 
-		public int PositionX {
+		public float PositionX {
 			get => _positionX;
 			set => _positionX = value;
 		}
 
-		public int PositionY {
+		public float PositionY {
 			get => _positionY;
 			set => _positionY = value;
 		}

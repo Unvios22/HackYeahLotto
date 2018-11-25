@@ -24,5 +24,7 @@ namespace HackYeahLotto {
 			get => _listOfGroupsInRegion;
 			set => _listOfGroupsInRegion = value;
 		}
+		
+
 	}
 }
