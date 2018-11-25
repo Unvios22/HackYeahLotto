@@ -33,7 +33,7 @@ namespace HackYeahLotto {
 		
 		private void SetNumberOfGroups()
 		{
-			var groupCount = _listOfAllPlayers.Count / Settings.playersInGrup;
+			var groupCount = _listOfAllPlayers.Count / Settings.playersInGroup;
 			for (int i = 0; i < groupCount; i++)
 			{
 				_numberOfGroups++;
@@ -42,7 +42,7 @@ namespace HackYeahLotto {
 
 		private void SetNumberOfRegions()
 		{
-			var regionsCount = _numberOfGroups/Settings.grupsInRegion;
+			var regionsCount = _numberOfGroups/Settings.groupsInRegion;
 			for (int i = 0; i < regionsCount; i++)
 			{
 				_numberOfRegions++;
@@ -52,7 +52,7 @@ namespace HackYeahLotto {
 		
 		private void InitializeRegions()
 		{
-			var groupsInRegions = Settings.grupsInRegion;
+			var groupsInRegions = Settings.groupsInRegion;
 			for (int i = 0; i < _numberOfRegions; i++)
 			{
 				
@@ -80,7 +80,7 @@ namespace HackYeahLotto {
 		private void AddPlayersToGroups()
 		{
 			var j = 0;
-			var playerCount = Settings.playersInGrup;
+			var playerCount = Settings.playersInGroup;
 			foreach (var region in _listOfAllRegions)
 			{
 				foreach (var @group in region.ListOfGroupsInRegion)
@@ -98,7 +98,7 @@ namespace HackYeahLotto {
 
 		void setRandomNumberOfTokens()
 		{
-			var playerCount = Settings.playersInGrup;
+			var playerCount = Settings.playersInGroup;
 			foreach (var region in _listOfAllRegions)
 			{
 				foreach (var @group in region.ListOfGroupsInRegion)
