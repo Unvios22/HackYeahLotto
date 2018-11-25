@@ -21,7 +21,7 @@ namespace HackYeahLotto {
 		{
 			SetNumberOfGroups();
 			SetNumberOfRegions();
-			InitializeRegions();
+			InitializeRegions(_listOfAllRegions);
 			for (int i = 0; i < 100; i++) //robie 100 graczy, bo taki mam kaprys
 			{
 				InitializePlayer();
@@ -33,6 +33,7 @@ namespace HackYeahLotto {
 		
 		private void SetNumberOfGroups()
 		{
+			
 			var groupCount = _listOfAllPlayers.Count / Settings.playersInGroup;
 			for (int i = 0; i < groupCount; i++)
 			{
@@ -50,7 +51,7 @@ namespace HackYeahLotto {
 			
 		}
 		
-		private void InitializeRegions()
+		private void InitializeRegions(List<Region> listOfRegions)
 		{
 			var groupsInRegions = Settings.groupsInRegion;
 			for (int i = 0; i < _numberOfRegions; i++)
@@ -62,7 +63,7 @@ namespace HackYeahLotto {
 				{
 					region.ListOfGroupsInRegion.Add(InitializeGroups());
 				}
-				_listOfAllRegions.Add(region);
+				listOfRegions.Add(region);
 			}
 		}
 
@@ -114,11 +115,23 @@ namespace HackYeahLotto {
 
 		private void setNewRegions()
 		{
+			// nowe Regiony, ze starymi Grupami, ze starymi Playerami
+			
+			
 			WinnerChooser chooser = new WinnerChooser();
-			List<Region> newRegion = new List<Region>();
-			
-			
-
+			List<Region> newRegions = new List<Region>();
+			_numberOfRegions /= 5; // ilość regionów do stworzenia;
+			InitializeRegions(newRegions); //nowe Regiony
+			var i = 0; //Zakładamy, że mieliśmy 20 Regionów. Teraz mamy w newRegions 4 regiony
+			foreach (var regions in newRegions) //Dla każdego z 4 Regionów
+			{
+				var count = regions.ListOfGroupsInRegion.Count;
+				for (int j = 0; j < count; j++)
+				{
+					regions.ListOfGroupsInRegion[j] = chooser.ChooseWinner(_listOfAllRegions[i].ListOfGroupsInRegion,_listOfAllRegions[i].NumberOftokensInRegion);
+					i++;
+				}
+			}
 		}
 		
 
