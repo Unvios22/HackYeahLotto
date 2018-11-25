@@ -128,7 +128,7 @@ namespace HackYeahLotto {
 				var count = regions.ListOfGroupsInRegion.Count;
 				for (int j = 0; j < count; j++)
 				{
-					regions.ListOfGroupsInRegion[j] = chooser.ChooseWinner(_listOfAllRegions[i].ListOfGroupsInRegion,_listOfAllRegions[i].NumberOftokensInRegion);
+					regions.ListOfGroupsInRegion[j] = chooser.ChooseWinner(_listOfAllRegions[i].ListOfGroupsInRegion,_listOfAllRegions[i].SumNumberOfTokens());
 					i++;
 				}
 			}
