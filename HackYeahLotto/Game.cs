@@ -135,6 +135,24 @@ namespace HackYeahLotto {
 
 			_listOfAllRegions = newRegions;
 		}
+
+		private List<Region> SetNewRegions(List<Group> winningGroups,int numberOfGroupsInRegion) {
+			var createdRegions = new List<Region>();
+			for (int i = 0; i < winningGroups.Count/5; i++) {
+				createdRegions.Add(new Region());
+			}
+
+			var count = 0;
+			for (int i = 0; i < winningGroups.Count; i++) {
+
+				createdRegions[count].ListOfGroupsInRegion.Add(winningGroups[i]);
+				
+				if (i%numberOfGroupsInRegion == 0) {
+					count++;
+				}
+			}
+			return createdRegions;
+		}
 		
 
 		public int NumberOfPlayers {
