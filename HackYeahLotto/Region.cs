@@ -9,6 +9,15 @@ namespace HackYeahLotto {
 
 		private List<Group> _listOfGroupsInRegion = new List<Group>();
 		//todo initialize the list properly
+		
+		void SumNumberOfTokens()
+		{
+			foreach (var group in _listOfGroupsInRegion)
+			{
+				_numberOftokensInRegion+=group.NumberOfTokensInGroup;
+			}
+		}
+
 
 		public int Id {
 			get => _id;

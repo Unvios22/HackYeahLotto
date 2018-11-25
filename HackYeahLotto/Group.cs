@@ -7,6 +7,14 @@ namespace HackYeahLotto {
 
 		private List<Player> _playersInGroup = new List<Player>();
 		//todo: how to initialize the list of players
+		
+		void SumNumberOfTokens()
+		{
+			foreach (var player in _playersInGroup)
+			{
+				_numberOfTokensInGroup += player.NumberofTokens;
+			}
+		}
 
 		public int Id {
 			get => _id;
