@@ -136,6 +136,7 @@ namespace HackYeahLotto {
 
 			_listOfAllRegions = newRegions;
 		}
+	
 		
 
 		public int NumberOfPlayers {
